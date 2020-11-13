@@ -1,0 +1,16 @@
+dashboard_elements:
+    - CPU_gauge.json
+    - CPU_hist.json
+    - Network_traffic.json
+    - IO_useage_times.json
+    - Memory_stack.json
+
+
+
+# List of available elements
+#CPU_gauge.json
+#CPU_hist.json
+#Disk_IOps.json
+#IO_useage_times.json
+#Memory_stack.json
+#Network_traffic.json
