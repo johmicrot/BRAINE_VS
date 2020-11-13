@@ -1,0 +1,78 @@
+
+{
+  "cacheTimeout": null,
+  "datasource": "Prometheus",
+  "description": "Busy state of all CPU cores together",
+  "fieldConfig": {
+    "defaults": {
+      "color": {
+        "mode": "thresholds"
+      },
+      "custom": {},
+      "mappings": [
+        {
+          "id": 0,
+          "op": "=",
+          "text": "N/A",
+          "type": 1,
+          "value": "null"
+        }
+      ],
+      "max": 100,
+      "min": 0,
+      "nullValueMode": "null",
+      "thresholds": {
+        "mode": "absolute",
+        "steps": [
+          {
+            "color": "rgba(50, 172, 45, 0.97)",
+            "value": null
+          },
+          {
+            "color": "rgba(237, 129, 40, 0.89)",
+            "value": 85
+          },
+          {
+            "color": "rgba(245, 54, 54, 0.9)",
+            "value": 95
+          }
+        ]
+      },
+      "unit": "percent"
+    },
+    "overrides": []
+  },
+  "gridPos": {
+    "h": 4,
+    "w": 3,
+    "x": 0,
+    "y": 1
+  },
+  "id": 20,
+  "links": [],
+  "options": {
+    "orientation": "horizontal",
+    "reduceOptions": {
+      "calcs": [
+        "lastNotNull"
+      ],
+      "fields": "",
+      "values": false
+    },
+    "showThresholdLabels": false,
+    "showThresholdMarkers": true
+  },
+  "pluginVersion": "7.3.1",
+  "targets": [
+    {
+      "expr": "(((count(count(node_cpu_seconds_total{instance=\"$node\",job=\"$job\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=\"$node\",job=\"$job\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=\"$node\",job=\"$job\"}) by (cpu))",
+      "hide": false,
+      "intervalFactor": 1,
+      "legendFormat": "",
+      "refId": "A",
+      "step": 900
+    }
+  ],
+  "title": "CPU Busy",
+  "type": "gauge"
+}

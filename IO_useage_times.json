@@ -1,0 +1,109 @@
+{
+  "aliasColors": {
+    "io time": "#890F02"
+  },
+  "bars": false,
+  "dashLength": 10,
+  "dashes": false,
+  "datasource": "Prometheus",
+  "decimals": 3,
+  "description": "",
+  "fieldConfig": {
+    "defaults": {
+      "custom": {},
+      "links": []
+    },
+    "overrides": []
+  },
+  "fill": 4,
+  "fillGradient": 0,
+  "gridPos": {
+    "h": 12,
+    "w": 12,
+    "x": 0,
+    "y": 37
+  },
+  "hiddenSeries": false,
+  "id": 127,
+  "legend": {
+    "alignAsTable": true,
+    "avg": true,
+    "current": true,
+    "max": true,
+    "min": true,
+    "rightSide": false,
+    "show": true,
+    "sort": null,
+    "sortDesc": null,
+    "total": false,
+    "values": true
+  },
+  "lines": true,
+  "linewidth": 1,
+  "links": [],
+  "maxPerRow": 6,
+  "nullPointMode": "null",
+  "options": {
+    "alertThreshold": true
+  },
+  "percentage": false,
+  "pluginVersion": "7.3.1",
+  "pointradius": 5,
+  "points": false,
+  "renderer": "flot",
+  "seriesOverrides": [],
+  "spaceLength": 10,
+  "stack": false,
+  "steppedLine": false,
+  "targets": [
+    {
+      "expr": "irate(node_disk_io_time_seconds_total{instance=\"$node\",job=\"$job\",device=~\"$diskdevices\"} [5m])",
+      "format": "time_series",
+      "hide": false,
+      "intervalFactor": 2,
+      "legendFormat": "{{device}} - Time spent doing I/Os",
+      "refId": "A",
+      "step": 240
+    }
+  ],
+  "thresholds": [],
+  "timeFrom": null,
+  "timeRegions": [],
+  "timeShift": null,
+  "title": "I/O Usage Times",
+  "tooltip": {
+    "shared": true,
+    "sort": 0,
+    "value_type": "individual"
+  },
+  "type": "graph",
+  "xaxis": {
+    "buckets": null,
+    "mode": "time",
+    "name": null,
+    "show": false,
+    "values": []
+  },
+  "yaxes": [
+    {
+      "format": "s",
+      "label": "time",
+      "logBase": 1,
+      "max": null,
+      "min": "0",
+      "show": true
+    },
+    {
+      "format": "s",
+      "label": "",
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": false
+    }
+  ],
+  "yaxis": {
+    "align": false,
+    "alignLevel": null
+  }
+}
