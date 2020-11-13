@@ -1,0 +1,204 @@
+{
+  "aliasColors": {
+    "Apps": "#629E51",
+    "Buffers": "#614D93",
+    "Cache": "#6D1F62",
+    "Cached": "#511749",
+    "Committed": "#508642",
+    "Free": "#0A437C",
+    "Hardware Corrupted - Amount of RAM that the kernel identified as corrupted / not working": "#CFFAFF",
+    "Inactive": "#584477",
+    "PageTables": "#0A50A1",
+    "Page_Tables": "#0A50A1",
+    "RAM_Free": "#E0F9D7",
+    "Slab": "#806EB7",
+    "Slab_Cache": "#E0752D",
+    "Swap": "#BF1B00",
+    "Swap - Swap memory usage": "#BF1B00",
+    "Swap_Cache": "#C15C17",
+    "Swap_Free": "#2F575E",
+    "Unused": "#EAB839",
+    "Unused - Free memory unassigned": "#052B51"
+  },
+  "bars": false,
+  "dashLength": 10,
+  "dashes": false,
+  "datasource": "Prometheus",
+  "decimals": 2,
+  "description": "",
+  "fieldConfig": {
+    "defaults": {
+      "custom": {},
+      "links": []
+    },
+    "overrides": []
+  },
+  "fill": 4,
+  "fillGradient": 0,
+  "gridPos": {
+    "h": 12,
+    "w": 12,
+    "x": 12,
+    "y": 17
+  },
+  "hiddenSeries": false,
+  "id": 24,
+  "legend": {
+    "alignAsTable": true,
+    "avg": true,
+    "current": true,
+    "max": true,
+    "min": true,
+    "rightSide": false,
+    "show": true,
+    "sideWidth": 350,
+    "sort": null,
+    "sortDesc": null,
+    "total": false,
+    "values": true
+  },
+  "lines": true,
+  "linewidth": 1,
+  "links": [],
+  "maxPerRow": 6,
+  "nullPointMode": "null",
+  "options": {
+    "alertThreshold": true
+  },
+  "percentage": false,
+  "pluginVersion": "7.3.1",
+  "pointradius": 5,
+  "points": false,
+  "renderer": "flot",
+  "seriesOverrides": [
+    {
+      "alias": "/.*Hardware Corrupted - *./",
+      "stack": false
+    }
+  ],
+  "spaceLength": 10,
+  "stack": true,
+  "steppedLine": false,
+  "targets": [
+    {
+      "expr": "node_memory_MemTotal_bytes{instance=\"$node\",job=\"$job\"} - node_memory_MemFree_bytes{instance=\"$node\",job=\"$job\"} - node_memory_Buffers_bytes{instance=\"$node\",job=\"$job\"} - node_memory_Cached_bytes{instance=\"$node\",job=\"$job\"} - node_memory_Slab_bytes{instance=\"$node\",job=\"$job\"} - node_memory_PageTables_bytes{instance=\"$node\",job=\"$job\"} - node_memory_SwapCached_bytes{instance=\"$node\",job=\"$job\"}",
+      "format": "time_series",
+      "hide": false,
+      "intervalFactor": 2,
+      "legendFormat": "Apps - Memory used by user-space applications",
+      "refId": "A",
+      "step": 240
+    },
+    {
+      "expr": "node_memory_PageTables_bytes{instance=\"$node\",job=\"$job\"}",
+      "format": "time_series",
+      "hide": false,
+      "intervalFactor": 2,
+      "legendFormat": "PageTables - Memory used to map between virtual and physical memory addresses",
+      "refId": "B",
+      "step": 240
+    },
+    {
+      "expr": "node_memory_SwapCached_bytes{instance=\"$node\",job=\"$job\"}",
+      "format": "time_series",
+      "intervalFactor": 2,
+      "legendFormat": "SwapCache - Memory that keeps track of pages that have been fetched from swap but not yet been modified",
+      "refId": "C",
+      "step": 240
+    },
+    {
+      "expr": "node_memory_Slab_bytes{instance=\"$node\",job=\"$job\"}",
+      "format": "time_series",
+      "hide": false,
+      "intervalFactor": 2,
+      "legendFormat": "Slab - Memory used by the kernel to cache data structures for its own use (caches like inode, dentry, etc)",
+      "refId": "D",
+      "step": 240
+    },
+    {
+      "expr": "node_memory_Cached_bytes{instance=\"$node\",job=\"$job\"}",
+      "format": "time_series",
+      "hide": false,
+      "intervalFactor": 2,
+      "legendFormat": "Cache - Parked file data (file content) cache",
+      "refId": "E",
+      "step": 240
+    },
+    {
+      "expr": "node_memory_Buffers_bytes{instance=\"$node\",job=\"$job\"}",
+      "format": "time_series",
+      "hide": false,
+      "intervalFactor": 2,
+      "legendFormat": "Buffers - Block device (e.g. harddisk) cache",
+      "refId": "F",
+      "step": 240
+    },
+    {
+      "expr": "node_memory_MemFree_bytes{instance=\"$node\",job=\"$job\"}",
+      "format": "time_series",
+      "hide": false,
+      "intervalFactor": 2,
+      "legendFormat": "Unused - Free memory unassigned",
+      "refId": "G",
+      "step": 240
+    },
+    {
+      "expr": "(node_memory_SwapTotal_bytes{instance=\"$node\",job=\"$job\"} - node_memory_SwapFree_bytes{instance=\"$node\",job=\"$job\"})",
+      "format": "time_series",
+      "hide": false,
+      "intervalFactor": 2,
+      "legendFormat": "Swap - Swap space used",
+      "refId": "H",
+      "step": 240
+    },
+    {
+      "expr": "node_memory_HardwareCorrupted_bytes{instance=\"$node\",job=\"$job\"}",
+      "format": "time_series",
+      "hide": false,
+      "intervalFactor": 2,
+      "legendFormat": "Hardware Corrupted - Amount of RAM that the kernel identified as corrupted / not working",
+      "refId": "I",
+      "step": 240
+    }
+  ],
+  "thresholds": [],
+  "timeFrom": null,
+  "timeRegions": [],
+  "timeShift": null,
+  "title": "Memory Stack",
+  "tooltip": {
+    "shared": true,
+    "sort": 0,
+    "value_type": "individual"
+  },
+  "type": "graph",
+  "xaxis": {
+    "buckets": null,
+    "mode": "time",
+    "name": null,
+    "show": true,
+    "values": []
+  },
+  "yaxes": [
+    {
+      "format": "bytes",
+      "label": "bytes",
+      "logBase": 1,
+      "max": null,
+      "min": "0",
+      "show": true
+    },
+    {
+      "format": "short",
+      "label": null,
+      "logBase": 1,
+      "max": null,
+      "min": null,
+      "show": false
+    }
+  ],
+  "yaxis": {
+    "align": false,
+    "alignLevel": null
+  }
+}
