@@ -1,0 +1,26 @@
+{
+  "datasource": null,
+  "fieldConfig": {
+    "defaults": {
+      "custom": {}
+    },
+    "overrides": []
+  },
+  "gridPos": {
+    "h": 6,
+    "w": 24,
+    "x": 0,
+    "y": 0
+  },
+  "id": 267,
+  "options": {
+    "content": "" ,
+    "mode": "html"
+  },
+  "pluginVersion": "7.3.1",
+  "timeFrom": null,
+  "timeShift": null,
+  "title": "Branding",
+  "transparent": true,
+  "type": "text"
+}
