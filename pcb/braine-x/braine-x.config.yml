@@ -1,3 +1,10 @@
+
+branding:
+    - description: company description
+    - email: company@company.company
+    - image_url_logo: https://www.logologo.com/logos/globe-compass-logoa.jpg
+    
+
 dashboard_elements:
     - CPU_gauge.json
     - CPU_hist.json
@@ -14,3 +21,11 @@ dashboard_elements:
 #IO_useage_times.json
 #Memory_stack.json
 #Network_traffic.json
+
+
+
+# if user wants to chagne the config file from default they must download it and change the branding information
+# and must use -c command with the image
+# if -c is not provided the defualt online config file will be used
+# if -c is provided the path specified will be used first
+  # if path doesn't contain the config file then default back to the online, but with warning
