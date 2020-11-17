@@ -1,8 +1,9 @@
 
-branding:
-    - description: company description
-    - email: company@company.company
-    - image_url_logo: https://www.logologo.com/logos/globe-compass-logoa.jpg
+branding: {
+  description: company description , 
+  email: company@company.company , 
+  image_url_logo: https://www.logologo.com/logos/globe-compass-logoa.jpg
+}
     
 
 dashboard_elements:
@@ -10,7 +11,7 @@ dashboard_elements:
     - CPU_hist.json
     - Network_traffic.json
     - IO_useage_times.json
-    - Memory_stack.json
+
 
 
 
